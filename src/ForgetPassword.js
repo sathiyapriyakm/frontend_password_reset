@@ -21,17 +21,18 @@ import {
     const[errorMsg,setErrorMsg]=useState("");
     const entry=()=>navigate("/");
   
-    const forgetUser =(emailDetail) => {
-      fetch(`${API}/forgetUser`,{
+    const forgetPassword =(emailDetail) => {
+      fetch(`${API}/forgetPassword`,{
       method: "POST",
       body: JSON.stringify(emailDetail),
       headers: {
         "Content-Type" : "application/json",
+
       },
     }).then((data)=>data.json())
     .then((data1)=>{
         console.log(data1);
-        if(data1.message==="successful login"){
+        if(data1.message==="Valid E-mail"){
             entry();}
         else {
             setErrorMsg(data1.message);
@@ -52,7 +53,7 @@ import {
       validationSchema:userValidationSchema ,
       onSubmit:(emailDetail)=>{
         console.log("onSubmit",emailDetail);
-        forgetUser(emailDetail);
+        forgetPassword(emailDetail);
       },
     });
     

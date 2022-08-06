@@ -19,7 +19,7 @@ import {
     
     const navigate=useNavigate();
     const[errorMsg,setErrorMsg]=useState("");
-    const entry=()=>navigate("/");
+    const entry=()=>navigate("/Welcome");
   
     const loginUser =(userDetail) => {
       fetch(`${API}/login`,{
@@ -107,5 +107,4 @@ import {
    </form> 
   </div>;
   }
-  
   
