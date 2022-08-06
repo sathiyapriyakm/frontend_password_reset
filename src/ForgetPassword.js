@@ -9,17 +9,13 @@ import {
   import * as Yup from "yup";
   
   import TextField from '@mui/material/TextField'
-  import { useNavigate } from 'react-router-dom'
   import { API } from './global.js';
   import { useState } from 'react';
   import {Link} from 'react-router-dom';
   
   
   export function ForgetPassword() {
-    
-    const navigate=useNavigate();
     const[errorMsg,setErrorMsg]=useState("");
-    const entry=()=>navigate("/");
   
     const forgetPassword =(emailDetail) => {
       fetch(`${API}/forgetPassword`,{
@@ -31,13 +27,9 @@ import {
       },
     }).then((data)=>data.json())
     .then((data1)=>{
-        console.log(data1);
-        if(data1.message==="Valid E-mail"){
-            entry();}
-        else {
             setErrorMsg(data1.message);
         }
-    });
+    );
     
 
     };
@@ -56,6 +48,7 @@ import {
         forgetPassword(emailDetail);
       },
     });
+    const style1=errorMsg==="User exists and password reset mail is sent"?{color:"green"}:{color:"red"}
     
     return <div className="add-user-container">
     <form  
@@ -83,7 +76,7 @@ import {
         color="primary"
       type="submit"
       variant="contained">submit</Button>
-      <div className="text-center" style={{color:"red"}}>
+      <div className="text-center" style={style1}>
     {errorMsg}
     </div>
       <div className="text-center" style={{color:"blue"}}>
