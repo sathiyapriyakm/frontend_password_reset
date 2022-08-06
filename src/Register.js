@@ -30,7 +30,6 @@ import {
       },
     }).then((data)=>data.json())
     .then((data1)=>{
-        console.log(data1.message);
         if(data1.message==="successful Signup"){
             login();}
         else {

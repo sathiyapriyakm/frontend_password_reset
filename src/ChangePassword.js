@@ -27,7 +27,6 @@ export function ChangePassword() {
   const[message,setMessage]=useState(null);
   // const entry=()=>navigate("/");
   const authDetail={id:id,token:token}
-  console.log(authDetail);
 
   const getApproval=(authDetail)=>{
     fetch(`${API}/verifyToken`,{
@@ -39,7 +38,6 @@ export function ChangePassword() {
     },
   }).then((data)=>data.json())
   .then((data1)=>{
-      console.log(data1);
       if(data1.message==="Changing Password Approved"){
         setMessage("Approved");}
       else {
@@ -67,7 +65,6 @@ function SetNewPassword({id}){
     },
   }).then((data)=>data.json())
   .then((data1)=>{
-      console.log(data1);
       if(data1.message==="Password updated successfully"){
         navigate("/PasswordUpdated")
       }else {
